@@ -12,6 +12,14 @@ a {
   color: rgba(0, 0, 0, 0.39);
   text-decoration: none;
 }
+.startbutton {
+  font-size: larger;
+  font: bolder;
+  color:rgba(33, 33, 33, 0.95);
+  width: auto;
+  height: auto;
+}
+
 .hidden {
   display: none !important;
 }
