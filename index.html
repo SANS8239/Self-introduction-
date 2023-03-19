@@ -15,16 +15,17 @@
             
         }
         .text_box {
-            height: 50px;
-            width: 35px;
-            background-color: aqua;
-            font-size: 20px;
+            height: 300px;
+            width: 250px;
+            background-color: ;
+            font-size: 25px;
             text-decoration: none;
             
         }
         body{
             background-color: LightSkyBlue;
-}
+        }
+        
         
         </style>
     </head>
@@ -44,9 +45,10 @@
 
         document.getElementById("startbutton").onclick = function startbtn () {
             var input = document.getElementById("text_box").value;
+            document.getElementById("text_box").value = "";
             console.log(input);
             alert(input);
-            document.getElementById("text_box").value = "";
+            
 
         };
     </script>
