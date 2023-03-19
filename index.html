@@ -11,7 +11,15 @@
             color: white;
             height: auto;
             width: auto;
-            font-size: auto;
+            font-size: 20px;
+            
+        }
+        .text_box {
+            height: 50px;
+            width: 35px;
+            background-color: aqua;
+            font-size: 20px;
+            text-decoration: none;
             
         }
         body{
@@ -21,14 +29,24 @@
         </style>
     </head>
     <body>
-        <input type="button" class="startbutton" id="startbutton" value="내용입력"/>
-        <input type="text" class="text_box" id="text_box" />
+        <div class="input_main">
+            <div class="button">
+                <input type="button" class="startbutton" id="startbutton" value="내용입력"/>
+            </div>
+            <div class="'box">
+            <input type="text" class="text_box" id="text_box" />
+            </div>  
+        </div>
     </body>
     <script>
+        
+
+
         document.getElementById("startbutton").onclick = function startbtn () {
             var input = document.getElementById("text_box").value;
+            console.log(input);
             alert(input);
-
+            document.getElementById("text_box").value = "";
 
         };
     </script>
