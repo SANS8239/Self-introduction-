@@ -2,7 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Introduce My Self</title>
+        <title>Test Html Index</title>
+        
     
     
     <style>
@@ -15,9 +16,9 @@
             
         }
         .text_box {
-            height: 300px;
-            width: 250px;
-            background-color: ;
+            height: auto;
+            width: auto;
+            background-color:cornsilk;
             font-size: 25px;
             text-decoration: none;
             
@@ -25,7 +26,7 @@
         body{
             background-color: LightSkyBlue;
         }
-        
+
         
         </style>
     </head>
@@ -38,18 +39,39 @@
             <input type="text" class="text_box" id="text_box" />
             </div>  
         </div>
+
+        <p>
+            <div class="button_submit">
+                <div>
+                    <input type="datetime" class="number_input" id="number_input" />
+                </div>
+                <div>
+                    <input type="button" class="submit_button" id="submit_button" /?
+                </div>
+            </div>
+        </p>
     </body>
     <script>
         
-
+        var input_content;
 
         document.getElementById("startbutton").onclick = function startbtn () {
             var input = document.getElementById("text_box").value;
             document.getElementById("text_box").value = "";
             console.log(input);
             alert(input);
+            input_content = input;
             
 
         };
+
+        document.getElementById("submit_button").onclick = function clickbtn () {
+            var date = document.getElementById("number_input").value;
+            alert(date);
+        };
+
+        
+        
+        
     </script>
 </html>
