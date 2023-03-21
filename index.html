@@ -131,6 +131,10 @@
                     const rm_meal = document.getElementById("mealdiet");
                     const rm_meal1 = document.getElementById("mealdiet1");
                     const rm_meal2 = document.getElementById("mealdiet2");
+                    rm_meal.parentNode.removeChild(rm_meal);
+                    rm_meal1.parentNode.removeChild(rm_meal1);
+                    rm_meal2.parentNode.removeChild(rm_meal2);
+
                     var mealData = data.mealServiceDietInfo[1].row[0].DDISH_NM;
                     console.log(mealData);
                     var mealresult = mealData.split("<br/>")
