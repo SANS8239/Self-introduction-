@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>github.test SANS8239</title>
+        <title>학교 급식 확인 - GONGMA</title>
         
     
     
@@ -50,17 +50,11 @@
 
         document.getElementById("startbutton").onclick = function startbtn () {
             var input = document.getElementById("text_box").value;
-            console.log(input);
+            var school_meal_data= neis.getMealInfo(N10, 8140347);
+            console.log(school_meal_data);
             
         };
         
-        const newEle = document.createElement("div");
-        
-        
-        
-
-        
-        
-        
+        const newEle = document.createElement("div"); 
     </script>
 </html>
