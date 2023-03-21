@@ -128,6 +128,9 @@
             fetch(apiUrl1)
                     .then(res => res.json())
                 .then(data => {
+                    const rm_meal = document.getElementById("mealdiet");
+                    const rm_meal1 = document.getElementById("mealdiet1");
+                    const rm_meal2 = document.getElementById("mealdiet2");
                     var mealData = data.mealServiceDietInfo[1].row[0].DDISH_NM;
                     console.log(mealData);
                     var mealresult = mealData.split("<br/>")
