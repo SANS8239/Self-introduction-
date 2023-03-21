@@ -16,6 +16,15 @@
         
         }
 
+        .resetbutton {
+            background-color: black;
+            color: white;
+            height: auto;
+            width: auto;
+            font-size: 20px;
+        
+        }
+
 
         .datetime {
             left: 1375px;
@@ -80,6 +89,7 @@
         <div class="input_main">
             <div class="button">
                 <input type="button" class="submitbutton" id="submitbutton" value="일자 입력"/>
+                <input type="button" class="resetbutton" id="resetbutton" value="내용 초기화(중복 오류 발생 시)"
             </div>
             <div>
                 <input type="number" class="datetime" id="datetime" />
@@ -121,6 +131,16 @@
         const n_schoolcode = 'N10';
         const schoolCode = '8140347'; // 학교 코드는 NEIS에서 제공하는 학교 검색 API를 사용하여 찾을 수 있습니다.
         
+        document.getElementById("resetbutton").onclick = function () {
+            const rm_meal = document.getElementById("mealdiet");
+            const rm_meal1 = document.getElementById("mealdiet1");
+            const rm_meal2 = document.getElementById("mealdiet2");
+            rm_meal.parentNode.removeChild(rm_meal);
+            rm_meal1.parentNode.removeChild(rm_meal1);
+            rm_meal2.parentNode.removeChild(rm_meal2);
+        }
+
+
         document.getElementById("submitbutton").onclick = function startbtn () {
             console.log("clicked")
             var date = document.getElementById("datetime").value;
@@ -128,12 +148,7 @@
             fetch(apiUrl1)
                     .then(res => res.json())
                 .then(data => {
-                    const rm_meal = document.getElementById("mealdiet");
-                    const rm_meal1 = document.getElementById("mealdiet1");
-                    const rm_meal2 = document.getElementById("mealdiet2");
-                    rm_meal.parentNode.removeChild(rm_meal);
-                    rm_meal1.parentNode.removeChild(rm_meal1);
-                    rm_meal2.parentNode.removeChild(rm_meal2);
+                    
 
                     var mealData = data.mealServiceDietInfo[1].row[0].DDISH_NM;
                     console.log(mealData);
