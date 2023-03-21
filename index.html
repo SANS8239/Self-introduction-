@@ -138,18 +138,13 @@
         const schoolCode = '8140347'; // 학교 코드는 NEIS에서 제공하는 학교 검색 API를 사용하여 찾을 수 있습니다.
         
         document.getElementById("resetbutton").onclick = function () {
-            const rm_meal = document.getElementById("mealdiet");
-            const rm_meal1 = document.getElementById("mealdiet1");
-            const rm_meal2 = document.getElementById("mealdiet2");
-            const new_meal = '<span class="title_breakfast">========조식=======</span>';
-            const new_meal1 = '<span class="title_lunch">========중식========</span>';
-            const new_meal2 = '<span class="title_dinner">========석식========</span>';
+            let rm_meal = document.getElementById("breakfastcontent");
+            let rm_meal1 = document.getElementById("lunchcontent");
+            let rm_meal2 = document.getElementById("dinnercontent");
             rm_meal.parentNode.removeChild(rm_meal);
             rm_meal1.parentNode.removeChild(rm_meal1);
             rm_meal2.parentNode.removeChild(rm_meal2);
-            document.querySelector('.breakfast').insertAdjacentHTML('beforeend', new_meal);
-            document.querySelector('.lunch').insertAdjacentHTML('beforeend', new_mea1l);
-            document.querySelector('.dinner').insertAdjacentHTML('beforeend', new_meal2);
+
         }
 
 
@@ -168,6 +163,7 @@
                     const myElement = document.getElementById('mealdiet');
                     for (let i = 0; i < mealresult.length; i++) {
                         const newElement = document.createElement("p");
+                        newElement.id = 'breakfastcontent';
                         newElement.innerText = mealresult[i];
                         myElement.appendChild(newElement);
                     }
@@ -183,6 +179,7 @@
                     const myElement1 = document.getElementById('mealdiet1');
                     for (let i = 0; i < mealresult1.length; i++) {
                         const newElement1 = document.createElement("p");
+                        newElement1.id = 'lunchcontent';
                         newElement1.innerText = mealresult1[i];
                         myElement1.appendChild(newElement1);
                     }
@@ -198,6 +195,7 @@
                     const myElement3 = document.getElementById('mealdiet2');
                     for (let i = 0; i < mealresult3.length; i++) {
                         const newElement3 = document.createElement("p");
+                        newElement3.id = 'dinnercontent';
                         newElement3.innerText = mealresult3[i];
                         myElement3.appendChild(newElement3);
                     }
