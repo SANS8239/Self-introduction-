@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>학교 급식 확인 - GONGMA</title>
+        <title>학교 급식 확인 - 14</title>
         
     
     
@@ -13,11 +13,11 @@
             height: auto;
             width: auto;
             font-size: 20px;
-            
+        
         }
 
 
-        .text_box {
+        .datetime {
             left: 1375px;
             height: auto;
             width: auto;
@@ -29,33 +29,155 @@
         body{
             background-color: LightSkyBlue;
         }
+        
+        .help-text {
+            color: black;
+            font-size: 22px;
+            text-decoration: none;
+            font-style: italic;
+            
+        }
+        p {
+            color: black;
+            font-size: x-large;
+            text-decoration: none;
+
+        }
+        .allergy-title {
+            font-size: larger;
+            color: red;
+            text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
+            text-decoration: none;
+        }
+
+        .allergy-content {
+            font-size: larger;
+            color: black;
+            text-decoration: none;
+        }
+
+        .title_breakfast {
+            font-size: larger;
+            color: white;
+            text-shadow: -2px 0px black, 0px 2px black, 2px 0px black, 0px -2px black;
+        }
+
+        .title_lunch {
+            font-size: larger;
+            color: white;
+            text-shadow: -2px 0px black, 0px 2px black, 2px 0px black, 0px -2px black;
+        }
 
         
+        .title_dinner {
+            font-size: larger;
+            color: white;
+            text-shadow: -2px 0px black, 0px 2px black, 2px 0px black, 0px -2px black;
+        }
         </style>
     </head>
     <body>
         <div class="input_main">
             <div class="button">
-                <input type="button" class="submitbutton" id="submitbutton" value="날짜입력"/>
+                <input type="button" class="submitbutton" id="submitbutton" value="일자 입력"/>
             </div>
-            <div class="'box">
-            <input type="text" class="text_box" id="text_box" value="날짜(예 2023/10/15 -> 20231025)"/>
-            </div>  
+            <div>
+                <input type="number" class="datetime" id="datetime" />
+            </div>
+            <div class="help">
+                <h1 class="help-text">2023년 10월 25일 -> 20231025</h1>
+            </div>
+            <div class="allergy-text" id="allergy-text">
+                <div class="allergy-title">
+                    <span>학교 급식 알레르기 유발식품</span>
+                </div>
+                <div class="allergy-content" id="allergy-content">
+                    <span>달걀 : 1  우유 : 2  메밀 : 3
+                          땅콩 : 4  대두 : 5  밀 : 6
+                          고등어 : 7  게 : 8  새우 : 9
+                          돈육 : 10  복숭아 : 11  토마토 : 12
+                          아황산 : 13  호두 : 14  닭고기 : 15
+                          쇠고기 : 16  오징어 : 17 잣 : 19
+                          일반 어패류(전복, 굴, 홍합 등) : 18
+                    </span>
+                </div>
+            </div>
+           
         </div>
-    </body>
-    <script>
-        const Neis = require("@my-school.info/neis-api");
-        const neis = new Neis({ KEY: "86c600b3526e40fc93759e16808d39fb", Type: "json|xml" });
+        <div class="mealdiet" id="mealdiet">
+            <span class="title_breakfast">========조식=======</span>
+        </div>
+        <div class="mealdiet1" id="mealdiet1">
+            <span class="title_lunch">========중식========</span>
+        </div>
+        <div class="mealdiet2" id="mealdiet2">
+            <span class="title_dinner">========석식========</span>
+        </div>
         
+    </body>
+    <script type="module">
+        
+        const apiKey = '86c600b3526e40fc93759e16808d39fb';
+        const n_schoolcode = 'N10';
+        const schoolCode = '8140347'; // 학교 코드는 NEIS에서 제공하는 학교 검색 API를 사용하여 찾을 수 있습니다.
+        
+        document.getElementById("submitbutton").onclick = function startbtn () {
+            console.log("clicked")
+            var date = document.getElementById("datetime").value;
+            const apiUrl1 = `https://open.neis.go.kr/hub/mealServiceDietInfo?ATPT_OFCDC_SC_CODE=${n_schoolcode}&SD_SCHUL_CODE=${schoolCode}&MLSV_YMD=${date}&MMEAL_SC_NM=조식&Type=json&KEY=${apiKey}`;
+            fetch(apiUrl1)
+                    .then(res => res.json())
+                .then(data => {
+                    var mealData = data.mealServiceDietInfo[1].row[0].DDISH_NM;
+                    console.log(mealData);
+                    var mealresult = mealData.split("<br/>")
+                    const myElement = document.getElementById('mealdiet');
+                    for (let i = 0; i < mealresult.length; i++) {
+                        const newElement = document.createElement("p");
+                        newElement.innerText = mealresult[i];
+                        myElement.appendChild(newElement);
+                    }
+            });
 
-        document.getElementById("startbutton").onclick = function startbtn () {
-            var input = document.getElementById("text_box").value;
-            var school_meal_data= neis.getMealInfo(N10, 8140347);
-            console.log(school_meal_data);
-            alert(school_meal_data);
+            const apiUrl2 = `https://open.neis.go.kr/hub/mealServiceDietInfo?ATPT_OFCDC_SC_CODE=${n_schoolcode}&SD_SCHUL_CODE=${schoolCode}&MLSV_YMD=${date}&MMEAL_SC_NM=중식&Type=json&KEY=${apiKey}`;
+            fetch(apiUrl2)
+                    .then(res1 => res1.json())
+                .then(data1 => {
+                    var mealData1 = data1.mealServiceDietInfo[1].row[1].DDISH_NM;
+                    console.log(mealData1);
+                    var mealresult1 = mealData1.split("<br/>")
+                    const myElement1 = document.getElementById('mealdiet1');
+                    for (let i = 0; i < mealresult1.length; i++) {
+                        const newElement1 = document.createElement("p");
+                        newElement1.innerText = mealresult1[i];
+                        myElement1.appendChild(newElement1);
+                    }
+            });
+
+            const apiUrl3 = `https://open.neis.go.kr/hub/mealServiceDietInfo?ATPT_OFCDC_SC_CODE=${n_schoolcode}&SD_SCHUL_CODE=${schoolCode}&MLSV_YMD=${date}&MMEAL_SC_NM=석식&Type=json&KEY=${apiKey}`;
+            fetch(apiUrl3)
+                    .then(res3 => res3.json())
+                .then(data3 => {
+                    var mealData3 = data3.mealServiceDietInfo[1].row[2].DDISH_NM;
+                    console.log(mealData3);
+                    var mealresult3 = mealData3.split("<br/>")
+                    const myElement3 = document.getElementById('mealdiet2');
+                    for (let i = 0; i < mealresult3.length; i++) {
+                        const newElement3 = document.createElement("p");
+                        newElement3.innerText = mealresult3[i];
+                        myElement3.appendChild(newElement3);
+                    }
+            });
+
             
         };
+
+
+            
         
-        const newEle = document.createElement("div"); 
+        const newEle = document.createElement("div");
+        
+         
+       
     </script>
 </html>
