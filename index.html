@@ -36,20 +36,20 @@
     <body>
         <div class="input_main">
             <div class="button">
-                <input type="button" class="startbutton" id="startbutton" value="내용입력"/>
+                <input type="button" class="submitbutton" id="submitbutton" value="날짜입력"/>
             </div>
             <div class="'box">
-            <input type="text" class="text_box" id="text_box" />
+            <input type="date" class="text_box" id="text_box" />
             </div>  
         </div>
     </body>
     <script>
-        
+        const Neis = require("@my-school.info/neis-api");
+        const neis = new Neis({ KEY: "86c600b3526e40fc93759e16808d39fb", Type: "json|xml" });
         
 
         document.getElementById("startbutton").onclick = function startbtn () {
             var input = document.getElementById("text_box").value;
-            document.getElementById("text_box").value = "";
             console.log(input);
             
         };
