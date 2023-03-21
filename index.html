@@ -175,7 +175,9 @@
 
         document.getElementById("submitbutton").onclick = function startbtn () {
             console.log("clicked")
-            var date = document.getElementById("datetime").value;
+            let datetime = document.getElementById("datetime").value;
+            let datetime_ = datetime.replace("-", "");
+            let date = datetime_.replace("-", "");
             const apiUrl1 = `https://open.neis.go.kr/hub/mealServiceDietInfo?ATPT_OFCDC_SC_CODE=${n_schoolcode}&SD_SCHUL_CODE=${schoolCode}&MLSV_YMD=${date}&MMEAL_SC_NM=조식&Type=json&KEY=${apiKey}`;
             fetch(apiUrl1)
                     .then(res => res.json())
