@@ -55,6 +55,15 @@
             
         }
 
+        .class_button_schedule {
+            background-color: black;
+            color: white;
+            height: auto;
+            width: auto;
+            font-size: 20px;
+        
+        }
+
         .text_help_grade-class {
             color: black;
             font-size: 22px;
@@ -186,6 +195,14 @@
         
         document.getElementById("class_button_schedule").onclick = function () {
             console.log("schedule button clicked");
+            let input_date = document.getElementById("class_input_schedule").value;
+            const urlset = `https://open.neis.go.kr/hub/hisTimetable?ATPT_OFCDC_SC_CODE=N10&SD_SCHUL_CODE=8140347&AY=2023&SEM=1&ALL_TI_YMD=${input_date}&DGHT_CRSE_SC_NM=%EC%A3%BC%EA%B0%84&ORD_SC_NM=%EA%B3%B5%EC%97%85%EA%B3%84&DDDEP_NM=%EC%A0%84%EA%B8%B0%EC%A0%84%EC%9E%90%EA%B3%BC&GRADE=1&CLASS_NM=4`
+            fetch(urlset)
+                    .then(schedule => schedule.json()) 
+                .then(schedule_data => {
+                    let schedule_data_result = schedule_data.hisTimetable[1].row[0].CDATA;
+                    console.log(schedule_data_result);
+                })
         }
 
 
