@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>학교 급식 확인 - 14</title>
+        <title>학교 급식 확인 - 2023학년도 - 1학기</title>
         
     
     
@@ -110,7 +110,7 @@
                 <input type="button" class="resetbutton" id="resetbutton" value="내용 초기화(중복 오류 발생 시)" />
             </div>
             <div>
-                <input type="number" class="datetime" id="datetime" />
+                <input type="date" class="datetime" id="datetime" />
             </div>
             <div class="help">
                 <h1 class="help-text">2023년 10월 25일 -> 20231025</h1>
@@ -148,6 +148,9 @@
         </div>
         </div>
         <div class="time_schedule">
+            <div class="button_schedules">
+                <input type="number" class="class_button_schedule" id="class_button_schedule" />
+            </div>
             <div class="schedule>">
                 <span class="title_schedule">=======시간표=======</span>
             </div>
@@ -160,6 +163,11 @@
         const n_schoolcode = 'N10';
         const schoolCode = '8140347';
         
+        document.getElementById("class_button_schedule").onclick = function () {
+            console.log("schedule button clicked");
+        }
+
+
         document.getElementById("resetbutton").onclick = function () {
            
             for (let q = 0; q < 10; q++) {    
