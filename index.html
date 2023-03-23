@@ -77,6 +77,14 @@
         
         }
 
+        .resetbutton_schedule {
+            background-color: black;
+            color: white;
+            height: auto;
+            width: auto;
+            font-size: 20px;
+        }
+
         .text_help_grade-class {
             color: black;
             font-size: 22px;
@@ -100,6 +108,12 @@
             font-size: x-large;
             text-decoration: none;
 
+        }
+
+        #schedulecontent {
+            color: black;
+            font-size: x-large;
+            text-decoration: none;
         }
         .allergy_title {
             font-size: larger;
@@ -138,6 +152,12 @@
             color: white;
             text-shadow: -2px 0px black, 0px 2px black, 2px 0px black, 0px -2px black;
         }
+
+        #warntouser{
+            color: red;
+            font-style: italic;
+            text-shadow: -0.5px 0px black, 0px 0.5px black, 0.5px 0px black, 0px -0.5px black;
+        }
         </style>
     </head>
     <body>
@@ -145,6 +165,9 @@
             <div class="button">
                 <input type="button" class="submitbutton" id="submitbutton" value="날짜 입력"/>
                 <input type="button" class="resetbutton" id="resetbutton" value="내용 초기화(중복 오류 발생 시)" />
+            </div>
+            <div>
+                <span id="warntouser">*버튼은 한번씩만 눌러주세요! API로 부터 정보를 제공받아 출력하기까지 시간이 걸릴 수 있습니다!*</span>
             </div>
             <div>
                 <input type="date" class="datetime" id="datetime" />
@@ -191,6 +214,7 @@
                 <input type="number" class="class_input_schedule_grade-class1" id="class_input_schedule_grade-class1" />
                 <input type="number" class="class_input_schedule_grade-class2" id="class_input_schedule_grade-class2" />
                 <input type="number" class="class_input_schedule" id="class_input_schedule" />
+                <input type="button" class="resetbutton_schedule" id="resetbutton_schedule" value="내용 초기화(중복 오류 발생 시)" />
                 
             </div>
             <div class="help_grade-class">
@@ -212,6 +236,14 @@
         const n_schoolcode = 'N10';
         const schoolCode = '8140347';
         
+        document.getElementById("resetbutton_schedule").onclick = function () {
+            for (let k = 1; k < 8; k++) {
+                let rm_shcedule = document.getElementById("schedulecontent");
+                rm_shcedule.remove();
+            }
+        }
+
+
         document.getElementById("class_button_schedule").onclick = function () {
             console.log("schedule button clicked");
             let input_date = document.getElementById("class_input_schedule").value;
@@ -224,12 +256,12 @@
                     .then(schedule => schedule.json()) 
                 .then(schedule_data => {
                     const myElement_s = document.getElementById('schedule');
-                    for (let i = 0; i <= 6; i++) {
-                        let schedule_data_result = schedule_data.hisTimetable[1].row[i].ITRT_CNTNT;
+                    for (let index = 0; index <= 6; index++) {
+                        let schedule_data_result = schedule_data.hisTimetable[1].row[index].ITRT_CNTNT;
                         console.log(schedule_data_result);
-                        const newElement_s = document.createElement("p");
+                        let newElement_s = document.createElement("p");
                         newElement_s.id = 'schedulecontent';
-                        newElement_s.innerText = schedule_data_result[i];
+                        newElement_s.innerText = schedule_data_result;
                         myElement_s.appendChild(newElement_s);
 
 
@@ -244,6 +276,7 @@
             let rm_meal = document.getElementById("breakfastcontent");
             let rm_meal1 = document.getElementById("lunchcontent");
             let rm_meal2 = document.getElementById("dinnercontent");
+            
             rm_meal.parentNode.removeChild(rm_meal);
             rm_meal1.parentNode.removeChild(rm_meal1);
             rm_meal2.parentNode.removeChild(rm_meal2);
