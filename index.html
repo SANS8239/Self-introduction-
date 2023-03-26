@@ -299,7 +299,8 @@
                     var mealresult = mealData.split("<br/>")
                     const myElement = document.getElementById('mealdiet');
                     for (let i = 0; i < mealresult.length; i++) {
-                        const newElement = document.createElement("p");
+                        const newElement = document.createElement("a");
+                        newElement.href = `https://search.naver.com/search.naver?where=image&sm=tab_jum&query=${mealresult}`
                         newElement.id = 'breakfastcontent';
                         newElement.innerText = mealresult[i];
                         myElement.appendChild(newElement);
