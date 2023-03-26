@@ -300,7 +300,7 @@
                     const myElement = document.getElementById('mealdiet');
                     for (let i = 0; i < mealresult.length; i++) {
                         const newElement = document.createElement("a");
-                        newElement.href = `https://search.naver.com/search.naver?where=image&sm=tab_jum&query=${mealresult}`
+                        newElement.href = `https://search.naver.com/search.naver?where=image&sm=tab_jum&query=${mealresult[i]}`
                         newElement.id = 'breakfastcontent';
                         newElement.innerText = mealresult[i];
                         myElement.appendChild(newElement);
