@@ -158,6 +158,10 @@
             font-style: italic;
             text-shadow: -0.5px 0px black, 0px 0.5px black, 0.5px 0px black, 0px -0.5px black;
         }
+        #tipsforuser {
+            color: blue;
+            text-shadow: -0.5px 0px black, 0px 0.5px black, 0.5px 0px black, 0px -0.5px black;
+        }
         </style>
     </head>
     <body>
@@ -168,6 +172,9 @@
             </div>
             <div>
                 <span id="warntouser">*버튼은 한번씩만 눌러주세요! API로 부터 정보를 제공받아 출력하기까지 시간이 걸릴 수 있습니다!*</span>
+            </div>
+            <div>
+                <span id="tipsforuser">급식메뉴를 클릭하면 자세한 정보를 볼 수 있습니다!</span>
             </div>
             <div>
                 <input type="date" class="datetime" id="datetime" />
@@ -301,9 +308,11 @@
                     for (let i = 0; i < mealresult.length; i++) {
                         const newElement = document.createElement("a");
                         newElement.href = `https://search.naver.com/search.naver?where=image&sm=tab_jum&query=${mealresult[i].split("(")[0]}`
+                        newElement.target = '_blank';
                         newElement.id = 'breakfastcontent';
-                        newElement.innerText = mealresult[i];
+                        newElement.innerText = "\n" + mealresult[i] + "\n";
                         myElement.appendChild(newElement);
+                  
                     }
             });
 
@@ -316,9 +325,11 @@
                     var mealresult1 = mealData1.split("<br/>")
                     const myElement1 = document.getElementById('mealdiet1');
                     for (let i = 0; i < mealresult1.length; i++) {
-                        const newElement1 = document.createElement("p");
+                        const newElement1 = document.createElement("a");
+                        newElement1.href = `https://search.naver.com/search.naver?where=image&sm=tab_jum&query=${mealresult1[i].split("(")[0]}`
+                        newElement1.target = '_blank';
                         newElement1.id = 'lunchcontent';
-                        newElement1.innerText = mealresult1[i];
+                        newElement1.innerText = "\n" + mealresult1[i] + "\n";
                         myElement1.appendChild(newElement1);
                     }
             });
@@ -332,9 +343,11 @@
                     var mealresult3 = mealData3.split("<br/>")
                     const myElement3 = document.getElementById('mealdiet2');
                     for (let i = 0; i < mealresult3.length; i++) {
-                        const newElement3 = document.createElement("p");
+                        const newElement3 = document.createElement("a");
+                        newElement3.href = `https://search.naver.com/search.naver?where=image&sm=tab_jum&query=${mealresult3[i].split("(")[0]}`
+                        newElement3.target = '_blank';
                         newElement3.id = 'dinnercontent';
-                        newElement3.innerText = mealresult3[i];
+                        newElement3.innerText = "\n" + mealresult3[i] + "\n";
                         myElement3.appendChild(newElement3);
                     }
             });
