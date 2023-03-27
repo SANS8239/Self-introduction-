@@ -30,7 +30,7 @@
             left: 1375px;
             height: auto;
             width: auto;
-            background-color:cornsilk;
+            background-color: cornsilk;
             font-size: 25px;
             text-decoration: none;
         }
@@ -162,7 +162,7 @@
         <div class="input_main">
             <div class="button">
                 <input type="button" class="submitbutton" id="submitbutton" value="날짜 입력"/>
-                <input type="button" class="resetbutton" id="resetbutton" value="내용 겹침 오류 발생 시(초기화)" />
+
             </div>
             <div>
                 <span id="warntouser">*버튼은 한번씩만 눌러주세요! API로 부터 정보를 제공받아 출력하기까지 시간이 걸릴 수 있습니다!*</span>
@@ -274,22 +274,40 @@
             }
 
 
-        document.getElementById("resetbutton").onclick = function () {
-           
-            for (let q = 0; q < 10; q++) {    
-            let rm_meal = document.getElementById("breakfastcontent");
-            let rm_meal1 = document.getElementById("lunchcontent");
-            let rm_meal2 = document.getElementById("dinnercontent");
-            
-            rm_meal.parentNode.removeChild(rm_meal);
-            rm_meal1.parentNode.removeChild(rm_meal1);
-            rm_meal2.parentNode.removeChild(rm_meal2);
-            }
-        }
-            
+
 
         document.getElementById("submitbutton").onclick = function startbtn () {
-            console.log("clicked")
+            try {
+                for (let q = 0; q < 10; q++) {    
+                let rm_meal = document.getElementById("breakfastcontent");
+                rm_meal.parentNode.removeChild(rm_meal); 
+                }
+            }
+            catch {
+                console.log("error1");
+            }
+            finally {
+                try {
+                for (let w = 0; w < 10; w++) {
+                    let rm_meal1 = document.getElementById("lunchcontent");
+                    rm_meal1.parentNode.removeChild(rm_meal1);
+                }
+            }
+            catch {
+                console.log("error2");
+            }
+            finally {
+                try {
+                    for (let e = 0; e < 10; e++) {
+                        let rm_meal2 = document.getElementById("dinnercontent");
+                        rm_meal2.parentNode.removeChild(rm_meal2);
+                    }
+                }
+                catch {
+                    console.log("error3");
+                }
+                finally {
+                    console.log("clicked")
             let datetime = document.getElementById("datetime").value;
             let datetime_ = datetime.replace("-", "");
             let date = datetime_.replace("-", "");
@@ -349,9 +367,15 @@
                         myElement3.appendChild(newElement3);
                     }
             });
-
+        
             
         };
+                }
+                
+
+            }
+        }
+            
         
 
             
