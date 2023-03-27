@@ -262,6 +262,33 @@
         // }
 
 
+            document.getElementById("info_button").onclick = function openPopup(url, width, height) {
+                try {
+                    const left = screen.width / 2 - width / 2;
+                    const top = screen.height / 2 - height / 2;
+
+                
+                    const options = `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`;
+
+                
+                    window.open(url, 'popup', options);
+
+                    openPopup('https://web-html123-6g2llfaw49kl.sel3.cloudtype.app/', 600, 400);
+                }
+                catch {
+                    console.log("error");
+                    return 0;
+                }
+                finally {
+
+                }
+            }
+
+    
+    
+
+
+
         document.getElementById("class_button_schedule").onclick = function () {
             console.log("schedule button clicked");
             try {
