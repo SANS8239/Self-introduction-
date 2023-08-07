@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>학교 급식 확인 - 2023학년도 - 1학기</title>
+        <title>학교 급식 확인 - 2023학년도 - 2학기</title>
         
     
     
@@ -170,8 +170,7 @@
     <body>
         <div class="input_main">
             <div class="button">
-                <input type="button" class="submitbutton" id="submitbutton" value="날짜 입력"/>
-                <input type="button" class="info_button" id="info_button" value="사용 방법"/>
+                <input type="button" class="submitbutton" id="submitbutton" value="급식 조회"/>
             </div>
             <div>
                 <span id="warntouser">*버튼은 한번씩만 눌러주세요! API로 부터 정보를 제공받아 출력하기까지 시간이 걸릴 수 있습니다!*</span>
@@ -239,28 +238,9 @@
 
 
 
-        const apiKey = '86c600b3526e40fc93759e16808d39fb';
+        const apiKey = 'cd7f27d6c94643f3b499cb3381196510';
         const n_schoolcode = 'N10';
         const schoolCode = '8140347';
-        
-    
-        // document.getElementById("info_button").onclick = function () {
-        //     console.log("information button clicked");
-
-        //     try {
-                
-        //     }
-        //     catch {
-        //         console.log("information-button_error");
-        //         return 0;
-        //     }
-        //     finally {
-        //         embed = prompt("오류 내용을 신고하여 주세요");
-        //         send.embed();
-        //     }
-            
-        // }
-
 
             document.getElementById("info_button").onclick = function openPopup(url, width, height) {
                 try {
@@ -309,7 +289,7 @@
             let input_grade_class2 = document.getElementById("class_input_schedule_grade-class2").value;
             console.log(input_grade_class1);
             console.log(input_grade_class2);
-            const urlset_d = `https://open.neis.go.kr/hub/hisTimetable?KEY=${apiKey}&ATPT_OFCDC_SC_CODE=N10&SD_SCHUL_CODE=8140347&AY=2023&SEM=1&ALL_TI_YMD=${input_date}&DGHT_CRSE_SC_NM=주간&ORD_SC_NM=%EA%B3%B5%EC%97%85%EA%B3%84&DDDEP_NM=%EC%A0%84%EA%B8%B0%EC%A0%84%EC%9E%90%EA%B3%BC&GRADE=${input_grade_class1}&CLASS_NM=${input_grade_class2}&Type=json`
+            const urlset_d = `https://open.neis.go.kr/hub/hisTimetable?KEY=${apiKey}&ATPT_OFCDC_SC_CODE=N10&SD_SCHUL_CODE=8140347&AY=2023&SEM=2&ALL_TI_YMD=${input_date}&DGHT_CRSE_SC_NM=주간&ORD_SC_NM=%EA%B3%B5%EC%97%85%EA%B3%84&DDDEP_NM=%EC%A0%84%EA%B8%B0%EC%A0%84%EC%9E%90%EA%B3%BC&GRADE=${input_grade_class1}&CLASS_NM=${input_grade_class2}&Type=json`
             fetch(urlset_d)
                     .then(schedule => schedule.json()) 
                 .then(schedule_data => {
